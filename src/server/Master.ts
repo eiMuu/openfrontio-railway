@@ -142,10 +142,10 @@ export async function startMaster() {
 }
 
 app.get("/api/env", async (req, res) => {
+  const gameEnv = process.env.GAME_ENV ?? "prod";
   const envConfig = {
-    game_env: process.env.GAME_ENV,
+    game_env: gameEnv,
   };
-  if (!envConfig.game_env) return res.sendStatus(500);
   res.json(envConfig);
 });
 
